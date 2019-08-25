@@ -19,7 +19,7 @@
         <item name="homeEndGradient">@color/endGradientColor</item>
         <item name="onHomeCardHeader">@color/onHomeCardHeader</item>
         <item name="onHomeCardContent">@color/onHomeCardContent</item>
-        <item name="popupBackgroundColor">#ff00ff</item>
+        <item name="popupBackgroundColor">@color/popupBackgroundColor</item>
         <item name="windowNoTitle">true</item>
         <item name="android:windowNoTitle">true</item>
     </style>
@@ -42,7 +42,7 @@
         <item name="homeEndGradient">@color/endGradientColorDark</item>
         <item name="onHomeCardHeader">@color/onHomeCardHeaderDark</item>
         <item name="onHomeCardContent">@color/onHomeCardContentDark</item>
-        <item name="popupBackgroundColor">#00ff00</item>
+        <item name="popupBackgroundColor">@color/popupBackgroundColorDark</item>
         <item name="android:windowNoTitle">true</item>
     </style>
 
