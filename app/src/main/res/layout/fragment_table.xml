@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+    android:id="@+id/table_refresh"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingStart="16dp"
+    android:paddingEnd="16dp"
+    android:paddingTop="16dp">
+
+<androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/table_head"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            >
+            <TextView
+                android:id="@+id/roomNumberHeader"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Nummer"
+                android:textColor="@color/white"
+                android:padding="8dp"
+                android:background="@drawable/table_head_border"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintWidth_default="percent"
+                app:layout_constraintWidth_percent="0.25"
+                />
+
+            <TextView
+                android:id="@+id/roomNameHeader"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Navn"
+                android:textColor="@color/white"
+                android:padding="8dp"
+                android:background="@drawable/table_head_border"
+                app:layout_constraintStart_toEndOf="@+id/roomNumberHeader"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintWidth_default="percent"
+                app:layout_constraintWidth_percent="0.25"
+                />
+
+            <TextView
+                android:id="@+id/roomStatusHeader"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Status"
+                android:textColor="@color/white"
+                android:layout_weight="0.25"
+                android:padding="8dp"
+                android:background="@drawable/table_head_border"
+                app:layout_constraintStart_toEndOf="@id/roomNameHeader"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintWidth_default="percent"
+                app:layout_constraintWidth_percent="0.25"
+                />
+
+            <TextView
+                android:id="@+id/roomAirQualityHeader"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Kvalitet"
+                android:textColor="@color/white"
+                android:padding="8dp"
+                android:background="@drawable/table_head_border"
+                app:layout_constraintStart_toEndOf="@id/roomStatusHeader"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintWidth_default="percent"
+                app:layout_constraintWidth_percent="0.25"
+                />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <ListView
+            android:id="@+id/room_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_below="@+id/table_head"
+            android:divider="@null"
+            android:dividerHeight="2dp"
+
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/table_head"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

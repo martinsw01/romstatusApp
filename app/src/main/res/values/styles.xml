@@ -1,0 +1,50 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="onPrimaryColor">@color/white</item>
+        <item name="backgroundColor">@color/backgroundColor</item>
+        <item name="onBackgroundColor">@android:color/black</item>
+        <item name="activeColor">@color/activeColor</item>
+        <item name="inactiveColor">@color/inactiveColor</item>
+        <item name="greatColor">@color/qualityGreat</item>
+        <item name="mediumColor">@color/qualityMedium</item>
+        <item name="poorColor">@color/qualityPoor</item>
+        <item name="onNavigationColor">@android:color/tab_indicator_text</item>
+        <item name="filterNavigationColor">@color/colorPrimary</item>
+        <item name="onFilterNavigationColor">@color/white</item>
+        <item name="homeStartGradient">@color/startGradientColor</item>
+        <item name="homeEndGradient">@color/endGradientColor</item>
+        <item name="onHomeCardHeader">@color/onHomeCardHeader</item>
+        <item name="onHomeCardContent">@color/onHomeCardContent</item>
+        <item name="popupBackgroundColor">#ff00ff</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.dark" parent="Theme.AppCompat.DayNight.DarkActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="onPrimaryColor">@color/white</item>
+        <item name="backgroundColor">@color/backgroundColorDark</item>
+        <item name="onBackgroundColor">@color/white</item>
+        <item name="activeColor">@color/activeColor</item>
+        <item name="inactiveColor">@color/inactiveColorDark</item>
+        <item name="greatColor">@color/qualityGreat</item>
+        <item name="mediumColor">@color/qualityMedium</item>
+        <item name="poorColor">@color/qualityPoor</item>
+        <item name="onNavigationColor">@color/onNavigationColorDark</item>
+        <item name="windowNoTitle">true</item>
+        <item name="filterNavigationColor">@color/inactiveColorDark</item>
+        <item name="onFilterNavigationColor">@color/colorPrimary</item>
+        <item name="homeStartGradient">@color/startGradientColorDark</item>
+        <item name="homeEndGradient">@color/endGradientColorDark</item>
+        <item name="onHomeCardHeader">@color/onHomeCardHeaderDark</item>
+        <item name="onHomeCardContent">@color/onHomeCardContentDark</item>
+        <item name="popupBackgroundColor">#00ff00</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+
+
+</resources>

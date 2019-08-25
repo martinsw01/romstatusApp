@@ -1,0 +1,35 @@
+<resources>
+    <string name="app_name">romstatus</string>
+    <string name="RoomNum">Romnummer</string>
+    <string name="RoomName">Romnavn</string>
+    <string name="RoomStatus">Romstatus</string>
+    <string name="occupied">Opptatt</string>
+    <string name="notOccupied">Ledig</string>
+    <string name="RoomAirQuality">Luftkvalitet</string>
+    <string name="greatQuality">Høy</string>
+    <string name="mediumQuality">Medium</string>
+    <string name="poorQuality">Lav</string>
+
+    <!-- Navigation -->
+    <string name="title_table">Tabell</string>
+    <string name="filter">Filter</string>
+    <string name="title_map">Kart</string>
+    <string name="floor_one">Første etasje</string>
+    <string name="floor_two">Andre etasje</string>
+    <string name="filter_floor">Etasje</string>
+    <string name="filter_status">Status</string>
+    <string name="filter_airQuality">Luftkvalitet</string>
+
+    <!-- Shared Preferences -->
+    <string name="preference_file_key">no.akademiet.romstatus.FILTERS</string>
+    <string name="filter_room">Rom</string>
+    <string name="night_mode">Nattmodus</string>
+    <string name="empty_rooms">Ledige Rom</string>
+    <string name="active_filters"> Aktive Filtere</string>
+    <string name="updates">Oppdateringer</string>
+    <string name="home">Hjem</string>
+    <string name="day_mode">Dagmodus</string>
+    <string name="no_connection">Ingen forbindelse med serveren</string>
+    <string name="waiting_for_server">Venter på serveren...</string>
+
+</resources>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="primaryColor" format="reference"/>
+    <attr name="backgroundColor" format="reference"/>
+    <attr name="activeColor" format="reference"/>
+    <attr name="inactiveColor" format="reference"/>
+    <attr name="greatColor" format="reference"/>
+    <attr name="mediumColor" format="reference"/>
+    <attr name="poorColor" format="reference"/>
+    <attr name="onPrimaryColor" format="reference"/>
+    <attr name="onBackgroundColor" format="reference"/>
+    <attr name="onNavigationColor" format="reference"/>
+    <attr name="filterNavigationColor" format="reference"/>
+    <attr name="onFilterNavigationColor" format="reference"/>
+    <attr name="homeEndGradient" format="reference"/>
+    <attr name="homeStartGradient" format="reference"/>
+    <attr name="onHomeCardHeader" format="reference"/>
+    <attr name="onHomeCardContent" format="reference"/>
+    <attr name="popupBackgroundColor" format="reference|color"/>
+</resources>

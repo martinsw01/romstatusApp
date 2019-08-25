@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--<color name="colorPrimaryDark">#00574B</color>
+    <color name="colorSecondary">#EbE9E8</color>
+    <color name="colorAccent">#ffffff</color>-->
+    <color name="white">#ffffff</color>
+
+    <color name="backgroundColor">#F9F8F6</color>
+    <color name="backgroundColorDark">#060709</color>
+
+    <color name="inactiveColor">#EbE9E8</color>
+    <color name="inactiveColorDark">#141617</color>
+    <color name="activeColor">#FFA500</color>
+    <color name="colorPrimary">#E77731</color>
+
+    <color name="qualityGreat">#00C540</color>
+    <color name="qualityMedium">#FFB400</color>
+    <color name="qualityPoor">#FF651C</color>
+
+    <color name="onNavigationColor">#c8FFFFFF</color>
+    <color name="onNavigationColorDark">#50ffffff</color>
+
+    <color name="startGradientColor">#FF651C</color>
+    <color name="startGradientColorDark">#121617</color>
+    <color name="endGradientColor">#FFA500</color>
+    <color name="endGradientColorDark">#F0121617</color>
+
+    <color name="onHomeCardHeader">#FFFFFF</color>
+    <color name="onHomeCardHeaderDark">#FFFFFF</color>
+    <color name="onHomeCardContent">#000000</color>
+    <color name="onHomeCardContentDark">#FF651C</color>
+
+    <color name="popupBackgroundColor">#C8F9F8F6</color>
+    <color name="popupBackgroundColorDark">#C8060709</color>
+
+</resources>

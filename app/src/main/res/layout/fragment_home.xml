@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+    android:id="@+id/home_refresh"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:paddingStart="16dp"
+    android:paddingEnd="16dp"
+    android:paddingTop="16dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:paddingEnd="4dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintWidth_default="percent"
+            app:layout_constraintWidth_percent="0.5"
+            >
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/filter_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="8dp"
+                android:onClick="onFilterClick"
+                >
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="16dp"
+                    android:paddingBottom="16dp"
+                    android:background="@drawable/home_card_background"
+                    >
+                    <TextView
+                        android:id="@+id/filter"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:text="@string/filter"
+                        android:textColor="?attr/onHomeCardHeader"
+                        />
+                    <ImageView
+                        android:id="@+id/filterIcon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_below="@+id/filter"
+                        android:tint="?attr/onHomeCardContent"
+                        android:src="@drawable/ic_baseline_filter_list_24px"/>
+
+                    <TextView
+                        android:id="@+id/filtersActive"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:textColor="?attr/onHomeCardHeader"
+                        android:text="@string/active_filters"
+                        android:layout_below="@+id/filterIcon"/>
+
+                    <TextView
+                        android:id="@+id/filtersAmount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/filtersActive"
+                        android:layout_centerHorizontal="true"
+                        android:textColor="?attr/onHomeCardContent"
+                        android:text="0"
+                        android:textSize="32sp"
+                        />
+
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/empty_rooms_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/filter_card"
+                android:layout_marginTop="8dp"
+                app:cardCornerRadius="8dp"
+                >
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="16dp"
+                    android:paddingBottom="16dp"
+                    android:background="@drawable/home_card_background">
+                    <TextView
+                        android:id="@+id/empty_rooms_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:textColor="?attr/onHomeCardHeader"
+                        android:text="@string/empty_rooms"/>
+                    <TextView
+                        android:id="@+id/empty_rooms_number"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:textColor="?attr/onHomeCardContent"
+                        android:layout_below="@+id/empty_rooms_text"
+                        android:text="0"
+                        android:textSize="32sp"/>
+
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:paddingStart="4dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintWidth_default="percent"
+            app:layout_constraintWidth_percent="0.5"
+            >
+            <androidx.cardview.widget.CardView
+                android:id="@+id/nightMode_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="8dp"
+                >
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="16dp"
+                    android:paddingBottom="16dp"
+                    android:background="@drawable/home_card_background">
+                    <TextView
+                        android:id="@+id/nightMode_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="?attr/onHomeCardHeader"
+                        android:layout_centerHorizontal="true"
+                        android:text="@string/night_mode"/>
+                    <ImageView
+                        android:id="@+id/nightMode_icon"
+                        android:layout_marginTop="4dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_below="@+id/nightMode_text"
+                        android:src="@drawable/ic_baseline_wb_sunny_24px"
+                        android:tint="?attr/onHomeCardContent"/>
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/updates_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/nightMode_card"
+                android:layout_marginTop="8dp"
+                app:cardCornerRadius="8dp"
+                >
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="16dp"
+                    android:paddingBottom="16dp"
+                    android:background="@drawable/home_card_background">
+                    <TextView
+                        android:id="@+id/updates_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="?attr/onHomeCardHeader"
+                        android:layout_centerHorizontal="true"
+                        android:text="@string/updates"/>
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_below="@+id/updates_text"
+                        android:layout_marginTop="4dp"
+                        android:src="@drawable/ic_baseline_system_update_24px"
+                        android:tint="?attr/onHomeCardContent"/>
+
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+        </RelativeLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
