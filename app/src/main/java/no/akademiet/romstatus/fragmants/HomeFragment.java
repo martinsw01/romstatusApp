@@ -50,7 +50,7 @@ public class HomeFragment extends Fragment {
         //doOnClick(R.id.filter_card, goToFilters);
         doOnClick(R.id.nightMode_card, setTheme);
         setCount(R.id.filtersAmount, RoomLogic.FilterLogic.getInstance().getFilterCunt(getContext()));
-        setCount(R.id.empty_rooms_number, RoomLogic.getInstance().getFilteredRoomList().size());
+        setCount(R.id.empty_rooms_number, RoomLogic.getInstance().getEmptyRoomCount());
 
         refreshOnPull();
     }
@@ -146,7 +146,7 @@ public class HomeFragment extends Fragment {
 
         @Override
         public void doOnSuccess() {
-            setCount(R.id.filtersAmount, RoomLogic.FilterLogic.getInstance().getFilterCunt(getContext()));
+            setCount(R.id.empty_rooms_number, RoomLogic.getInstance().getEmptyRoomCount());
         }
 
         @Override

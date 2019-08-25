@@ -39,6 +39,16 @@ public class RoomLogic {
         return fullRoomList;
     }
 
+    public int getEmptyRoomCount() {
+        int emptyRooms = 0;
+        for (Room room : fullRoomList) {
+            if (!room.isOccupied()) {
+                ++emptyRooms;
+            }
+        }
+        return emptyRooms;
+    }
+
     public void setFullRoomList(List<Room> fullRoomList) {
         this.fullRoomList = fullRoomList;
     }
