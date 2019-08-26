@@ -12,6 +12,7 @@
         android:layout_width="match_parent"
         android:layout_marginTop="8dp"
         android:text="@string/RoomNum"
+        android:textColor="?attr/onBackgroundColor"
         android:gravity="center"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
