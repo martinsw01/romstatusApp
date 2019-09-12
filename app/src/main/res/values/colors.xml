@@ -30,7 +30,8 @@
     <color name="onHomeCardContent">#000000</color>
     <color name="onHomeCardContentDark">#FF651C</color>
 
-    <color name="popupBackgroundColor">#C8F9F8F6</color>
-    <color name="popupBackgroundColorDark">#C8060709</color>
+    <color name="popupBackgroundColor">#F9F8F6</color>
+    <color name="popupBackgroundColorDark">#0affffff</color>
 
+    <color name="blackTextColor">@android:color/black</color>
 </resources>
