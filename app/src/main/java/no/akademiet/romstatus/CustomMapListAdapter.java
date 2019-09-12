@@ -61,6 +61,9 @@ public class CustomMapListAdapter extends ArrayAdapter<Room> {
         if (filtered) {
             roomNumberField.setVisibility(View.INVISIBLE);
         }
+        else if (!RoomLogic.getInstance().isConnected()) {
+            roomNumberField.setText("N/A");
+        }
         else {
             setColorBasedOnStatusAndAirQuality(position, roomNumberField);
 
@@ -82,10 +85,7 @@ public class CustomMapListAdapter extends ArrayAdapter<Room> {
     private void setColorBasedOnStatusAndAirQuality(int position, TextView roomField) {
         Room room = getItem(position);
         Drawable background = roomField.getBackground().mutate();
-        if (!RoomLogic.getInstance().isConnected()) {
-            roomField.setText("N/A");
-            return;
-        }
+
         if (!room.isOccupied()) {
             roomField.setTextColor(context.getResources().getColor(R.color.blackTextColor));
 
