@@ -1,6 +1,5 @@
 package no.akademiet.romstatus;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 
@@ -14,6 +13,8 @@ public class RoomLogic {
     private List<Room> filteredRoomList;
 
     private static RoomLogic single_instance = null;
+
+    private Boolean isConnected;
 
     private RoomLogic(Context context, List<Room> fullRoomList) {
         this.context = context;
@@ -33,6 +34,15 @@ public class RoomLogic {
 
     public void reset() {
         single_instance = null;
+    }
+
+    public void setConnection(boolean isConnected) {
+        if (null == this.isConnected)
+            this.isConnected = isConnected;
+    }
+
+    public boolean isConnected() {
+        return isConnected;
     }
 
     public List<Room> getFullRoomList() {
@@ -95,21 +105,24 @@ public class RoomLogic {
     }
 
     public List<Room> getFilteredWithNulledRoomList() {
-        List<Room> filteredWithNulledRoomList = new ArrayList<>();
-        filteredWithNulledRoomList.addAll(filteredRoomList);
-        filteredWithNulledRoomList.add(new Room(1));
+        List<Room> filteredWithNulledRoomList = new ArrayList<>(filteredRoomList);
+        filteredWithNulledRoomList.add(new Room(1, false));
 
         int roomNumberInFullList;
         int roomNumberInFilteredList;
 
-        for (int x = 0; x < fullRoomList.size(); ++x) {
-            roomNumberInFullList = fullRoomList.get(x).getRoomNumber();
-            roomNumberInFilteredList = filteredWithNulledRoomList.get(x).getRoomNumber();
+        try {
+            for (int x = 0; x < fullRoomList.size(); ++x) {
+                roomNumberInFullList = fullRoomList.get(x).getRoomNumber();
+                roomNumberInFilteredList = filteredWithNulledRoomList.get(x).getRoomNumber();
 
-            if (roomNumberInFilteredList != roomNumberInFullList) {
-                filteredWithNulledRoomList.add(x, new Room(fullRoomList.get(x).getFloor()));
+                if (roomNumberInFilteredList != roomNumberInFullList) {
+                    filteredWithNulledRoomList.add(x, new Room(fullRoomList.get(x).getFloor(), true));
+                }
             }
         }
+        catch (Exception e) {e.printStackTrace();}
+
         return filteredWithNulledRoomList;
     }
 
