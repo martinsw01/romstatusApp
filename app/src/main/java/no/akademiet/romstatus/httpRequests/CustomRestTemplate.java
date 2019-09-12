@@ -1,4 +1,4 @@
-package no.akademiet.romstatus;
+package no.akademiet.romstatus.httpRequests;
 
 import android.util.Log;
 
