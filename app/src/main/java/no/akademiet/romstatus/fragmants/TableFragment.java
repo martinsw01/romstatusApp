@@ -22,7 +22,7 @@ import no.akademiet.romstatus.MainActivity;
 import no.akademiet.romstatus.R;
 import no.akademiet.romstatus.Listeners.RefreshListener;
 import no.akademiet.romstatus.Room;
-import no.akademiet.romstatus.RoomListRequestTask;
+import no.akademiet.romstatus.httpRequests.RoomListRequestTask;
 import no.akademiet.romstatus.RoomLogic;
 
 public class TableFragment extends Fragment {
@@ -206,6 +206,7 @@ public class TableFragment extends Fragment {
         @Override
         public void doOnSuccess() {
             table.showTable(RoomLogic.getInstance().getFilteredRoomList());
+            CustomSnackbar.make(getContext(), getActivity()).show();
         }
 
         @Override
