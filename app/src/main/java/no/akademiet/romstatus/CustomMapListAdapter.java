@@ -3,6 +3,7 @@ package no.akademiet.romstatus;
 import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
@@ -55,7 +56,7 @@ public class CustomMapListAdapter extends ArrayAdapter<Room> {
 
         setChildHeightBasedOnParentHeight(roomNumberField);
 
-        boolean filtered = 0 == room.getRoomNumber();
+        boolean filtered = -1 == room.getRoomNumber();
 
         if (filtered) {
             roomNumberField.setVisibility(View.INVISIBLE);
@@ -81,7 +82,13 @@ public class CustomMapListAdapter extends ArrayAdapter<Room> {
     private void setColorBasedOnStatusAndAirQuality(int position, TextView roomField) {
         Room room = getItem(position);
         Drawable background = roomField.getBackground().mutate();
+        if (!RoomLogic.getInstance().isConnected()) {
+            roomField.setText("N/A");
+            return;
+        }
         if (!room.isOccupied()) {
+            roomField.setTextColor(context.getResources().getColor(R.color.blackTextColor));
+
             switch (room.getAirQuality()) {
                 case R.string.greatQuality:
                     setBackgroundColor(background, R.color.qualityGreat);
@@ -90,7 +97,7 @@ public class CustomMapListAdapter extends ArrayAdapter<Room> {
                     setBackgroundColor(background, R.color.qualityMedium);
                     return;
                 case R.string.poorQuality:
-                    setBackgroundColor(background, R.color.qualityMedium);
+                    setBackgroundColor(background, R.color.qualityPoor);
                     break;
                 default:
                     setBackgroundColor(background, R.color.qualityGreat);
@@ -160,6 +167,8 @@ public class CustomMapListAdapter extends ArrayAdapter<Room> {
         int height = LinearLayout.LayoutParams.WRAP_CONTENT;
         boolean focusable = true; // lets taps outside the popup also dismiss it
         final PopupWindow popupWindow = new PopupWindow(popupView, width, height, focusable);
+
+        popupWindow.setElevation(10);
 
         // show the popup window
         // which view you pass in doesn't matter, it is only used for the window token
