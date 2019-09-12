@@ -6,16 +6,21 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
+
+import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.widget.ListView;
 import android.widget.TextView;
+import androidx.appcompat.app.AlertDialog.Builder;
 
 import no.akademiet.romstatus.CustomFilterListAdapter;
+import no.akademiet.romstatus.CustomRoomListAdapter;
 import no.akademiet.romstatus.R;
 
 public class FiltersStatusFragment extends Fragment {
@@ -53,17 +58,14 @@ public class FiltersStatusFragment extends Fragment {
 
     private void setCustomListFilterAdapter(String[][] filters, int resourceId, int parentResourceId) {
         ListView statusFilterGrid = (ListView) getActivity().findViewById(resourceId);
-        final StatusFilterAdapter statusAdapter = new StatusFilterAdapter(getContext(), getActivity(), R.layout.filter_list_layout,filters);
+        StatusFilterAdapter statusAdapter = new StatusFilterAdapter(getContext(), getActivity(), R.layout.filter_list_layout,filters);
         statusAdapter.setParentHeight(statusAdapter.getParentHeight(parentResourceId));
         statusFilterGrid.setAdapter(statusAdapter);
 
-        final TextView header = (TextView) getActivity().findViewById(R.id.filter_statusHeader);
-        header.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                header.setText(String.valueOf(statusAdapter.getParentHeight(R.id.filter_status_box)));
-            }
-        });
+        ViewGroup.LayoutParams params = statusFilterGrid.getLayoutParams();
+        params.height = statusAdapter.getParentHeight(parentResourceId) * 3/2;
+        statusFilterGrid.setLayoutParams(params);
+        statusFilterGrid.requestLayout();
     }
 
     private class StatusFilterAdapter extends CustomFilterListAdapter {
@@ -76,7 +78,6 @@ public class FiltersStatusFragment extends Fragment {
             ConstraintLayout parent = (ConstraintLayout) getActivity().findViewById(parentId);
             TextView firstHeader = (TextView) parent.getChildAt(0);
             ListView listView = (ListView) parent.getChildAt(1);
-            firstHeader.measure(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT);
             return firstHeader.getMeasuredHeight() + listView.getPaddingTop();
         }
 
