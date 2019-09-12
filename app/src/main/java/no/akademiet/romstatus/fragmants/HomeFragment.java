@@ -1,7 +1,9 @@
 package no.akademiet.romstatus.fragmants;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -16,6 +18,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.android.material.snackbar.Snackbar;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,8 +27,9 @@ import no.akademiet.romstatus.Listeners.FailureListener;
 import no.akademiet.romstatus.Listeners.FilterFragmentListener;
 import no.akademiet.romstatus.MainActivity;
 import no.akademiet.romstatus.R;
-import no.akademiet.romstatus.RoomListRequestTask;
+import no.akademiet.romstatus.httpRequests.RoomListRequestTask;
 import no.akademiet.romstatus.RoomLogic;
+import no.akademiet.romstatus.httpRequests.VersionRequestTask;
 
 public class HomeFragment extends Fragment {
 
@@ -49,8 +54,19 @@ public class HomeFragment extends Fragment {
         setNightModeIcon();
         //doOnClick(R.id.filter_card, goToFilters);
         doOnClick(R.id.nightMode_card, setTheme);
-        setCount(R.id.filtersAmount, RoomLogic.FilterLogic.getInstance().getFilterCunt(getContext()));
-        setCount(R.id.empty_rooms_number, RoomLogic.getInstance().getEmptyRoomCount());
+
+        String filterCount;
+        String roomCount;
+
+        boolean isConnected = RoomLogic.getInstance().isConnected();
+
+        roomCount = isConnected ? String.valueOf(RoomLogic.getInstance().getEmptyRoomCount()) : "N/A";
+        filterCount = String.valueOf(RoomLogic.FilterLogic.getInstance().getFilterCunt(getContext()));
+
+        setCount(R.id.filtersAmount, filterCount);
+        setCount(R.id.empty_rooms_number, roomCount);
+
+        checkForUpdates();
 
         refreshOnPull();
     }
@@ -77,16 +93,14 @@ public class HomeFragment extends Fragment {
             editor.putBoolean("DarkMode", !darkModeIsEnabled);
             editor.apply();
             getActivity().recreate();
-
-
         }
     };
 
-    private void setCount(int textViewId, int count) {
+    private void setCount(int textViewId, String count) {
         TextView countField = (TextView) getActivity().findViewById(textViewId);
 
         if (null != countField) {
-            countField.setText(String.valueOf(count));
+            countField.setText(count);
         }
     }
 
@@ -146,7 +160,8 @@ public class HomeFragment extends Fragment {
 
         @Override
         public void doOnSuccess() {
-            setCount(R.id.empty_rooms_number, RoomLogic.getInstance().getEmptyRoomCount());
+            setCount(R.id.empty_rooms_number, String.valueOf(RoomLogic.getInstance().getEmptyRoomCount()));
+            CustomSnackbar.make(getContext(), getActivity()).show();
         }
 
         @Override
@@ -154,4 +169,33 @@ public class HomeFragment extends Fragment {
             notifyFailureListener();
         }
     }
+
+    private void checkForUpdates() {
+        CardView updatesCard = (CardView) getActivity().findViewById(R.id.updates_card);
+        updatesCard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new RequestVersion(getContext()).execute();
+            }
+        });
+    }
+
+    private class RequestVersion extends VersionRequestTask {
+        public RequestVersion(Context context) {
+            super(context);
+        }
+
+        @Override
+        public void doIfTrue() {
+            Snackbar.make(getActivity().findViewById(R.id.content), getContext().getString(R.string.latestVersionTrue), Snackbar.LENGTH_SHORT);
+        }
+
+        @Override
+        public void doOnFailure() {
+            notifyFailureListener();
+        }
+    }
+
+
+
 }
