@@ -1,18 +1,21 @@
-package no.akademiet.romstatus;
+package no.akademiet.romstatus.httpRequests;
 
 import android.content.Context;
 import android.os.AsyncTask;
-import android.view.View;
 
 import org.springframework.http.HttpEntity;
-import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import no.akademiet.romstatus.Room;
+import no.akademiet.romstatus.RoomList;
+import no.akademiet.romstatus.RoomLogic;
+import no.akademiet.romstatus.httpRequests.CustomRestTemplate;
+
 
 public abstract class RoomListRequestTask extends AsyncTask<Void, Void, RoomList> {
-    final private String stringUrl = "http://10.0.0.135:8080";  // TODO: 2019-08-25 set correct url
+    final private String stringUrl = "http://10.0.0.56:8080";  // TODO: 2019-08-25 set correct url
     final private String prefix = "/object";
 
     private Context context;
@@ -39,14 +42,21 @@ public abstract class RoomListRequestTask extends AsyncTask<Void, Void, RoomList
 
     @Override
     protected void onPostExecute(RoomList roomList) {
+        boolean isConnected;
         if (null != roomList) {
             setNewList(roomList);
             doOnSuccess();
+
+            isConnected = true;
         }
         else {
             setDummyList();
             doOnFailure();
+
+            isConnected = false;
         }
+
+        RoomLogic.getInstance().setConnection(isConnected);
     }
 
     private void setNewList(RoomList roomList) {
@@ -73,21 +83,13 @@ public abstract class RoomListRequestTask extends AsyncTask<Void, Void, RoomList
     private List<Room> getDummyList() {
         List<Room> dummyRoomList = new ArrayList<>();
 
-        dummyRoomList.add(new Room(1));
-        dummyRoomList.add(new Room(1));
-        dummyRoomList.add(new Room( 1));
-        dummyRoomList.add(new Room( 1));
-        dummyRoomList.add(new Room( 1));
+        for (int x = 111; x < 115; ++x) {
+            dummyRoomList.add(new Room(1, false));
+        }
 
-        dummyRoomList.add(new Room( 2));
-        dummyRoomList.add(new Room( 2));
-        dummyRoomList.add(new Room( 2));
-        dummyRoomList.add(new Room( 2));
-        dummyRoomList.add(new Room( 2));
-        dummyRoomList.add(new Room( 2));
-        dummyRoomList.add(new Room( 2));
-        dummyRoomList.add(new Room( 2));
-        dummyRoomList.add(new Room( 2));
+        for (int x = 209; x < 217; ++x) {
+            dummyRoomList.add(new Room(2, false));
+        }
 
         return dummyRoomList;
     }
