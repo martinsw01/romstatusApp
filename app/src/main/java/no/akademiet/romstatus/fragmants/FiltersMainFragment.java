@@ -64,7 +64,7 @@ public class FiltersMainFragment extends Fragment {
         private final List<String> mFragmentTitleList = new ArrayList<>();
 
         public Adapter(FragmentManager manager) {
-            super(manager);
+            super(manager, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
         }
 
         @Override
