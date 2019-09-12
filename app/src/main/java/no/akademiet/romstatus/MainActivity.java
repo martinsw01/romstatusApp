@@ -29,6 +29,7 @@ import no.akademiet.romstatus.fragmants.FiltersMainFragment;
 import no.akademiet.romstatus.fragmants.HomeFragment;
 import no.akademiet.romstatus.fragmants.MapFragment;
 import no.akademiet.romstatus.fragmants.TableFragment;
+import no.akademiet.romstatus.httpRequests.RoomListRequestTask;
 
 public class MainActivity extends AppCompatActivity implements FailureListener {
 
@@ -209,21 +210,14 @@ public class MainActivity extends AppCompatActivity implements FailureListener {
 
     private void setDummyRoomList() {
         dummyRoomList.clear();
-        dummyRoomList.add(new Room(1));
-        dummyRoomList.add(new Room(1));
-        dummyRoomList.add(new Room( 1));
-        dummyRoomList.add(new Room( 1));
-        dummyRoomList.add(new Room( 1));
 
-        dummyRoomList.add(new Room( 2));
-        dummyRoomList.add(new Room( 2));
-        dummyRoomList.add(new Room( 2));
-        dummyRoomList.add(new Room( 2));
-        dummyRoomList.add(new Room( 2));
-        dummyRoomList.add(new Room( 2));
-        dummyRoomList.add(new Room( 2));
-        dummyRoomList.add(new Room( 2));
-        dummyRoomList.add(new Room( 2));
+        for (int x = 111; x < 115; ++x) {
+            dummyRoomList.add(new Room(1, false));
+        }
+
+        for (int x = 209; x < 217; ++x) {
+            dummyRoomList.add(new Room(2, false));
+        }
     }
 
     private void setNewTheme() {
@@ -237,7 +231,7 @@ public class MainActivity extends AppCompatActivity implements FailureListener {
     }
 
 
-    private class RequestRooms extends RoomListRequestTask{
+    private class RequestRooms extends RoomListRequestTask {
         public RequestRooms(Context context) {
             super(context);
         }
@@ -284,7 +278,8 @@ public class MainActivity extends AppCompatActivity implements FailureListener {
             int width = LinearLayout.LayoutParams.WRAP_CONTENT;
             int height = LinearLayout.LayoutParams.WRAP_CONTENT;
             boolean focusable = true; // lets taps outside the popup also dismiss it
-            final PopupWindow popupWindow = new PopupWindow(popupView, width, height, focusable);
+            PopupWindow popupWindow = new PopupWindow(popupView, width, height, focusable);
+            popupWindow.setElevation(10);
 
             // show the popup window
             // which view you pass in doesn't matter, it is only used for the window token
