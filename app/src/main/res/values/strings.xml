@@ -2,9 +2,13 @@
     <string name="app_name">romstatus</string>
     <string name="RoomNum">Romnummer</string>
     <string name="RoomName">Romnavn</string>
+
+    <!-- Room Status -->
     <string name="RoomStatus">Romstatus</string>
     <string name="occupied">Opptatt</string>
     <string name="notOccupied">Ledig</string>
+
+    <!-- Air Quality -->
     <string name="RoomAirQuality">Luftkvalitet</string>
     <string name="greatQuality">Høy</string>
     <string name="mediumQuality">Medium</string>
@@ -22,6 +26,8 @@
 
     <!-- Shared Preferences -->
     <string name="preference_file_key">no.akademiet.romstatus.FILTERS</string>
+
+
     <string name="filter_room">Rom</string>
     <string name="night_mode">Nattmodus</string>
     <string name="empty_rooms">Ledige Rom</string>
@@ -31,5 +37,10 @@
     <string name="day_mode">Dagmodus</string>
     <string name="no_connection">Ingen forbindelse med serveren</string>
     <string name="waiting_for_server">Venter på serveren...</string>
+    <string name="no_connection_header">Ingen forbindelse</string>
+    <string name="successfull">Forespørsel vellykket</string>
+    <string name="appVersion">pre-release</string>
+    <string name="latestVersionTrue">Siste verson allerede installert</string>
+    <string name="adress">10.0.0.56</string>
 
 </resources>
