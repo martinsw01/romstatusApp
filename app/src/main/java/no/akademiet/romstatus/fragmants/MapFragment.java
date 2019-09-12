@@ -8,7 +8,6 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
-import android.os.ResultReceiver;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,7 +22,7 @@ import no.akademiet.romstatus.MainActivity;
 import no.akademiet.romstatus.R;
 import no.akademiet.romstatus.Listeners.RefreshListener;
 import no.akademiet.romstatus.Room;
-import no.akademiet.romstatus.RoomListRequestTask;
+import no.akademiet.romstatus.httpRequests.RoomListRequestTask;
 import no.akademiet.romstatus.RoomLogic;
 
 public class MapFragment extends Fragment {
@@ -146,6 +145,7 @@ public class MapFragment extends Fragment {
         @Override
         public void doOnSuccess() {
             setRoomList(RoomLogic.getInstance().getFilteredWithNulledRoomList());
+            CustomSnackbar.make(getContext(), getActivity()).show();
             map.showMap(floor1List, 1);
             map.showMap(floor2List, 2);
         }
