@@ -15,8 +15,9 @@ public class Room {
         this.floor = floor;
     }
 
-    public Room(int floor) {
+    public Room(int floor, boolean filtered) {
         this.floor = floor;
+        this.roomNumber = filtered ? -1 : 0;
     }
 
     public Room() {}
